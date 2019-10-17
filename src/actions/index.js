@@ -11,6 +11,8 @@ export const fetchPosts = () => async dispatch => {
         _fetchUser(id, dispatch)
     }
 
+    // this use of lodash with memoize solves our over fetching of users issues
+    
     const _fetchUser = _.memoize(async(id,dispatch) => {
         const response = await jsonPlaceHolder.get(`/users/${id}`)
 
