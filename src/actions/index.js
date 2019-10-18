@@ -1,5 +1,22 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 import jsonPlaceHolder from '../apis/jsonPlaceholder'
+
+/**
+ * fethchPostsAndUsers()
+ * call 'fetchPosts;
+ * Get List of posts
+ * find all unique userId's from list of posts
+ * Iterate over unique userId's
+ * call 'fetchUser' with each userId
+ */
+
+ // fetchPostsAndUsers is the only action creator we are going to call
+
+export const fetchPostsAndUsers = () => async dispatch => {
+    console.log('about to fetch posts')
+    await dispatch(fetchPosts())
+    console.log('fetched posts!')
+}
 
 export const fetchPosts = () => async dispatch => {
         const response = await jsonPlaceHolder.get('/posts')
@@ -27,12 +44,5 @@ export const fetchPosts = () => async dispatch => {
         dispatch({ type: 'FETCH_USER', payload: response.data })
     }
 
-    /**
-     * fethchPostsAndUsers()
-     * call 'fetchPosts;
-     * Get List of posts
-     * find all unique userId's from list of posts
-     * Iterate over unique userId's
-     * call 'fetchUser' with each userId
-     */
+    
   
